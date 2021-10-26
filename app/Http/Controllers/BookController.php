@@ -106,10 +106,30 @@ class BookController extends Controller
     }
 
     public function review(Request $request, $id)
-    {
+    {   
+
+        $this->validate($request, [
+            "text" => 'required|max:255',
+            "rating" => 'required|numeric|min:0|max:100'
+        ], [ 
+
+             "text.required" => 'Write some review!',
+             "text.max" => 'Too long,  max 255 characters!',
+
+             "rating.required" => 'Rate me!',
+             "rating.min" => 'Min rate is 0!',
+             "rating.max" => 'Max rate 100!'
+
+        ]);
+
+
         $data = $request->all();
         $data['book_id'] = $id;
-        $review = Review::create($data);
+        Review::create($data);
+
+        session()->flash('success_message', 'The review was successfully updated!');
+
+        return redirect()->action('App\Http\Controllers\BookController@show',['id'=>$id] );
     }
 
     private function validateForm(Request $request)

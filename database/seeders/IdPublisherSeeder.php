@@ -20,6 +20,8 @@ class IdPublisherSeeder extends Seeder
             $range = random_int(1, 4);
             $book->publisher_id = $range;
             $book->save();
+
+            
         }
         
     }
