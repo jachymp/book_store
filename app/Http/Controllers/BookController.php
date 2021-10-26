@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Review;
 
 class BookController extends Controller
 {
@@ -102,6 +103,13 @@ class BookController extends Controller
         // dd($books);
 
         return view('book/index', compact('books'));
+    }
+
+    public function review(Request $request, $id)
+    {
+        $data = $request->all();
+        $data['book_id'] = $id;
+        $review = Review::create($data);
     }
 
     private function validateForm(Request $request)

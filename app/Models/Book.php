@@ -23,4 +23,10 @@ class Book extends Model
     {
         return $this->belongsTo('App\Models\Publisher');
     }
+
+    public function reviews()
+    {
+        // Book has many review(s)
+        return $this->hasMany('App\Models\Review');
+    }
 }

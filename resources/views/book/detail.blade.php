@@ -23,4 +23,11 @@
     <form action="/books/{{$book->id}}/edit" method="get">
         <button>Update book</button>
     </form>
+
+    <form action="/books/{{$book->id}}/review" method="post">
+        @csrf
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+        <input type="number" name="rating">
+        <input type="submit" value="Submit">
+    </form>
 @endsection

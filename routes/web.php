@@ -31,6 +31,7 @@ Route::get('/books/{id}', 'App\Http\Controllers\BookController@show');
 Route::get('/books/{id}/edit', 'App\Http\Controllers\BookController@edit');
 Route::put('/books/{id}', 'App\Http\Controllers\BookController@update');
 Route::delete('/books/{id}/delete', 'App\Http\Controllers\BookController@delete');
+Route::post('/books/{id}/review', 'App\Http\Controllers\BookController@review');
 
 
 // AUTHOR controller
