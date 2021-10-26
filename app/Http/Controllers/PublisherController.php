@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Publisher;
+use App\Models\Book;
+
+class PublisherController extends Controller
+{
+    public function index()
+    {
+        $publishers = Publisher::all();
+
+        return view('publisher/index', compact('publishers'));
+    }
+
+    public function show($id)
+    {
+         $books = Book::where('publisher_id', '=', $id)->get();
+        //  dd($books);
+
+        return view('publisher/show', compact('books'));
+    }
+}
