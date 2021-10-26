@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Publisher;
-use App\Models\Book;
 
 class PublisherController extends Controller
 {
@@ -17,9 +16,9 @@ class PublisherController extends Controller
 
     public function show($id)
     {
-         $books = Book::where('publisher_id', '=', $id)->get();
+         $publisher = Publisher::findOrFail($id);
         //  dd($books);
 
-        return view('publisher/show', compact('books'));
+        return view('publisher/show', compact('publisher'));
     }
 }
