@@ -20,7 +20,7 @@ Route::get('/', 'App\Http\Controllers\IndexController@index');
 Route::get('/about-us', 'App\Http\Controllers\AboutController@aboutUs');
 
 // FAQ controller
-Route::get('/faq', 'App\Http\Controllers\FAQController@index');
+Route::get('/faq', 'App\Http\Controllers\FAQController@index')->middleware('auth');
 
 // BOOK controller
 Route::get('/books', 'App\Http\Controllers\BookController@index');

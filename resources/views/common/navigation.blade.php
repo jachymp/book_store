@@ -1,4 +1,3 @@
-<div>
 <nav>
     <a href="/">Home</a>
     <a href="/books">Books</a>
@@ -11,10 +10,7 @@
     <a href="/publishers">Publishers</a>
 </nav>
 
-<form action="/books/search" method="get">
-    <label for="search_bar">Search book:</label>
-    <input type="text" id="search_bar" name="search_bar">
-    <input type="submit" value="Search">
+<form action="{{ route('logout') }}" method="post">
+    @csrf
+    <button>Logout</button>
 </form>
-
-</div>

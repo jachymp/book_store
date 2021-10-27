@@ -14,7 +14,7 @@ class BookController extends Controller
     {
     
     $books = Book::orderBy('title')
-        ->paginate(20);
+        ->simplePaginate(20);
         // ->limit(20)                
         // ->get();
 

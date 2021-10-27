@@ -10,6 +10,12 @@
 <body>
     @include('common/navigation')
 
+    @if (Auth::check())
+        <h1>Hello, {{Auth::user()->name}}</h1>
+        {{Auth::id()}}
+    @endif
+    
+
     @include('common/errors')
 
     @yield('content')
