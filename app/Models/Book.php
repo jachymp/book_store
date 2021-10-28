@@ -29,4 +29,9 @@ class Book extends Model
         // Book has many review(s)
         return $this->hasMany('App\Models\Review');
     }
+
+    public function bookshops()
+    {
+        return $this->belongsToMany('App\Models\Bookshop');
+    }
 }
