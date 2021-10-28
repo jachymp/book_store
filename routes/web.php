@@ -32,6 +32,7 @@ Route::get('/books/{id}/edit', 'App\Http\Controllers\BookController@edit');
 Route::put('/books/{id}', 'App\Http\Controllers\BookController@update');
 Route::delete('/books/{id}/delete', 'App\Http\Controllers\BookController@delete');
 Route::post('/books/{id}/review', 'App\Http\Controllers\BookController@review');
+Route::delete('/books/{id}/reviews/{review_id}', 'App\Http\Controllers\BookController@reviewDelete');
 
 
 // AUTHOR controller
@@ -51,3 +52,5 @@ Route::delete('/categories/{id}/delete', 'App\Http\Controllers\CategoryControlle
 // PUBLISHERS controller
 Route::get('/publishers', 'App\Http\Controllers\PublisherController@index');
 Route::get('/publishers/{id}', 'App\Http\Controllers\PublisherController@show');
+
+// REVIEW controller

@@ -35,17 +35,31 @@
         <button>Update book</button>
     </form>
 
-
+    
+    <h4>All reviews:</h4>
     @foreach ($book->reviews as $review)
         <li> {{ $review->text }} - {{ $review->rating }}</li>
+
+        @can('admin')
+            <form action="/books/{{$book->id}}/reviews/{{$review->id}}" method="post">
+                @csrf
+                @method('delete')
+                <button>Delete review</button>
+            </form>
+        @endcan
+        
         
     @endforeach
 
-
-    <form action="/books/{{$book->id}}/review" method="post">
-        @csrf
-        <textarea name="text" id="text" cols="30" rows="10"></textarea>
-        <input type="number" name="rating">
-        <input type="submit" value="Submit">
-    </form>
+    @if (Auth::check())
+        <h4>Create review:</h4>
+        <form action="/books/{{$book->id}}/review" method="post">
+            @csrf
+            <textarea name="text" id="text" cols="30" rows="10"></textarea>
+            <br>
+            <input type="number" name="rating">
+            <input type="submit" value="Submit">
+        </form>
+    @endif
+    
 @endsection

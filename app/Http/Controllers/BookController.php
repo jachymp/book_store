@@ -17,7 +17,6 @@ class BookController extends Controller
         ->simplePaginate(20);
         // ->limit(20)                
         // ->get();
-
    
     return view('book/index', compact('books'));
     }
@@ -56,6 +55,7 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::findOrFail($id);
+ 
         return view('book\detail', compact('book'));
     }
 
@@ -128,6 +128,15 @@ class BookController extends Controller
         Review::create($data);
 
         session()->flash('success_message', 'The review was successfully updated!');
+
+        return redirect()->action('App\Http\Controllers\BookController@show',['id'=>$id] );
+    }
+
+    public function reviewDelete($id, $review_id)
+    {
+        $review = Review::find($review_id);
+
+        $review->delete();
 
         return redirect()->action('App\Http\Controllers\BookController@show',['id'=>$id] );
     }

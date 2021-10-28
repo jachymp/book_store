@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class FAQController extends Controller
 {
     public function index()
     {
+        // $user = User::where('id', 2)->first();
+
+        // dd($user->can('has_greater_id', 1));
+
+        // you can use method CAN to get if user is allowed to see something
+        // if(Gate::allows('admin')) {
+        //     return "This is just for admin";
+        // }
         $faqs = [
             [
                 'Q' => 'How much is delivery?',
